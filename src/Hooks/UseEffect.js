@@ -13,7 +13,16 @@ import React, {useState, useEffect} from 'react';
 	React guarantees effects happen after render (DOM has been updated).
  */
  function UseEffect() {
- 	const [count, setCount] = useState(0);
+ 	const initialCount = 2
+ 	/* 
+ 	  useState can accept function to get initial state
+ 	  if initial state is the result of an expensive computation
+ 	  const [state, setState] = useState(() => {
+	  	const initialState = someExpensiveComputation(props);
+		return initialState;
+	  });
+ 	*/
+ 	const [count, setCount] = useState(initialCount);
 
  	/* 
 	 function passed to useEffect will be different on every render.
@@ -21,7 +30,7 @@ import React, {useState, useEffect} from 'react';
 	*/
  	useEffect(() => {
  		document.title = `You clicked ${count} times`;
- 	}, [count]);
+ 	}, []);
  	/*
  	 second argument to useEffect, is for optimizing peformance.
  	 just like comparison in componentDidUpdate.
@@ -32,9 +41,15 @@ import React, {useState, useEffect} from 'react';
  	return(
  		<div>
  			<p>You clicked {count} times</p>
- 			<button onClick={() => setCount(count + 1)}>
- 				Click
+ 			<button onClick={() => setCount(initialCount)}>
+ 				Reset
  			</button>
+      		<button onClick={() => setCount(prevCount => prevCount + 1)}>
+      			Add
+  			</button>
+      		<button onClick={() => setCount(prevCount => prevCount - 1)}>
+      			Minus
+  			</button>
  		</div>
  	);
  }

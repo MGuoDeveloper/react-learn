@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './App.css';
 import '../node_modules/video-react/dist/video-react.css';
-import HookTest from './HookTest'
+import UseEffect from './Hooks/UseEffect'
 import VideoTest from './VideoTest'
 
 class App extends Component {
@@ -42,7 +42,7 @@ class App extends Component {
 
           {items}
         </ReactCSSTransitionGroup>
-        <HookTest />
+        <UseEffect />
         <div className="video-container">
           <VideoTest />
         </div>
