@@ -4,6 +4,7 @@ import './App.css';
 import '../node_modules/video-react/dist/video-react.css';
 import UseEffect from './Hooks/UseEffect'
 import VideoTest from './VideoTest'
+import FetchData from './Request/FetchData'
 
 class App extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class App extends Component {
 
     return (
       <div>
+        <FetchData />
         <button onClick={this.handleAdd}>Add Item</button>
         <ReactCSSTransitionGroup
           transitionName="example"
@@ -47,7 +49,7 @@ class App extends Component {
           <VideoTest />
         </div>
 
-        <video width="400" controls autoplay>
+        <video width="400" controls autoPlay>
           <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
             type="video/mp4" />
         </video>
