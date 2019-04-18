@@ -1,4 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
+
+function usePrevious(value) {
+	const ref = useRef();
+	useEffect(() => {
+		ref.current = value;
+	});
+	return ref.current;
+}
 
 /*
 	Side Effects: data fetching, subscriptions, manually changing DOM
@@ -23,6 +31,7 @@ import React, {useState, useEffect} from 'react';
 	  });
  	*/
  	const [count, setCount] = useState(initialCount);
+ 	const preVal = usePrevious(count);
 
  	/* 
 	 function passed to useEffect will be different on every render.
@@ -41,6 +50,7 @@ import React, {useState, useEffect} from 'react';
  	return(
  		<div>
  			<p>You clicked {count} times</p>
+ 			<p>You clicked {preVal} times last time</p>
  			<button onClick={() => setCount(initialCount)}>
  				Reset
  			</button>
